@@ -3,7 +3,7 @@ import { Box, Text, useInput, useApp, useStdout } from 'ink';
 import { useBeadsStore } from '../state/store';
 import { Board } from './Board';
 import { BeadsWatcher } from '../bd/watcher';
-import { loadBeads, findBeadsDir } from '../bd/parser';
+import { loadBeads, findBeadsDir, detectBackend } from '../bd/parser';
 import { getTheme } from '../themes/themes';
 
 export function App() {
@@ -55,8 +55,9 @@ export function App() {
         const data = await loadBeads(path);
         setData(data);
 
-        // Set up watcher
-        const watcher = new BeadsWatcher(path);
+        // Detect backend and set up watcher
+        const backend = await detectBackend(path);
+        const watcher = new BeadsWatcher(path, backend);
         watcher.subscribe((data) => {
           setData(data);
         });

@@ -1,12 +1,43 @@
 import { Database } from 'bun:sqlite';
-import { stat } from 'fs/promises';
+import { stat, readFile } from 'fs/promises';
 import { join } from 'path';
 import type { Issue, BeadsData } from '../types';
+import { loadBeadsDolt } from './dolt-parser';
+
+export type BeadsBackend = 'sqlite' | 'dolt';
+
+/**
+ * Detect the database backend from .beads/metadata.json
+ */
+export async function detectBackend(beadsPath: string): Promise<BeadsBackend> {
+  try {
+    const metadataPath = join(beadsPath, 'metadata.json');
+    const raw = await readFile(metadataPath, 'utf-8');
+    const metadata = JSON.parse(raw);
+    if (metadata.backend === 'dolt' || metadata.database === 'dolt') {
+      return 'dolt';
+    }
+  } catch {
+    // No metadata.json or parse error — default to sqlite
+  }
+  return 'sqlite';
+}
+
+/**
+ * Read all issues from bd database (SQLite or Dolt)
+ */
+export async function loadBeads(beadsPath: string = '.beads'): Promise<BeadsData> {
+  const backend = await detectBackend(beadsPath);
+  if (backend === 'dolt') {
+    return loadBeadsDolt(beadsPath);
+  }
+  return loadBeadsSqlite(beadsPath);
+}
 
 /**
  * Read all issues from bd SQLite database
  */
-export async function loadBeads(beadsPath: string = '.beads'): Promise<BeadsData> {
+export async function loadBeadsSqlite(beadsPath: string): Promise<BeadsData> {
   const dbPath = join(beadsPath, 'beads.db');
 
   try {
