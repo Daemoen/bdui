@@ -44,11 +44,11 @@ export function StatusColumn({
       {/* Header */}
       <Box
         borderStyle={isActive ? 'double' : 'single'}
-        borderColor={isActive ? theme.colors.primary : statusColor}
+        borderColor={statusColor}
         paddingX={1}
         justifyContent="center"
       >
-        <Text bold color={isActive ? theme.colors.primary : statusColor}>
+        <Text bold color={statusColor}>
           {title} ({totalIssues})
         </Text>
       </Box>
@@ -113,10 +113,10 @@ export function StatusColumn({
         <Box justifyContent="center" paddingTop={1}>
           <Box
             borderStyle="single"
-            borderColor={isActive ? theme.colors.primary : theme.colors.border}
+            borderColor={isActive ? theme.colors.selection : theme.colors.border}
             paddingX={1}
           >
-            <Text color={isActive ? theme.colors.primary : theme.colors.textDim}>
+            <Text color={isActive ? theme.colors.selection : theme.colors.textDim}>
               Page {currentPage}/{totalPages}
             </Text>
             {isActive && (

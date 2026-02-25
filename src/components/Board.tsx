@@ -125,7 +125,7 @@ function KanbanView() {
           </Text>
         </Box>
         <Box gap={2}>
-          <Text color={theme.colors.textDim}>Total: <Text color={theme.colors.text}>{filteredData.stats.total}</Text></Text>
+          <Text color={theme.colors.textDim}>Total: <Text color="white">{filteredData.stats.total}</Text></Text>
           <Text color={theme.colors.textDim}>Open: <Text color={theme.colors.statusOpen}>{filteredData.stats.open}</Text></Text>
           <Text color={theme.colors.textDim}>Blocked: <Text color={theme.colors.statusBlocked}>{filteredData.stats.blocked}</Text></Text>
           <Text color={theme.colors.textDim}>Closed: <Text color={theme.colors.statusClosed}>{filteredData.stats.closed}</Text></Text>

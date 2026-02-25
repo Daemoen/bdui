@@ -23,6 +23,7 @@ export interface Theme {
 
     // UI colors
     primary: string;
+    selection: string;
     secondary: string;
     accent: string;
     background: string;
@@ -57,6 +58,7 @@ export const themes: Record<string, Theme> = {
       typeChore: 'gray',
 
       primary: 'cyan',
+      selection: 'cyan',
       secondary: 'blue',
       accent: 'magenta',
       background: 'black',
@@ -90,6 +92,7 @@ export const themes: Record<string, Theme> = {
       typeChore: 'gray',
 
       primary: 'cyan',
+      selection: 'cyan',
       secondary: 'blue',
       accent: 'green',
       background: 'black',
@@ -123,6 +126,7 @@ export const themes: Record<string, Theme> = {
       typeChore: 'gray',
 
       primary: 'green',
+      selection: 'green',
       secondary: 'cyan',
       accent: 'yellow',
       background: 'black',
@@ -156,6 +160,7 @@ export const themes: Record<string, Theme> = {
       typeChore: 'gray',
 
       primary: 'magenta',
+      selection: 'magenta',
       secondary: 'yellow',
       accent: 'red',
       background: 'black',
@@ -165,6 +170,40 @@ export const themes: Record<string, Theme> = {
       success: 'cyan',
       error: 'red',
       warning: 'yellow',
+    },
+  },
+
+  sonokai: {
+    name: 'Sonokai',
+    colors: {
+      statusOpen: '#0087ff',
+      statusInProgress: '#e7c664',
+      statusBlocked: '#af0000',
+      statusClosed: '#9ed072',
+
+      priorityCritical: '#fc5d7c',
+      priorityHigh: '#f39660',
+      priorityMedium: '#e7c664',
+      priorityLow: '#76cce0',
+      priorityLowest: '#7f8490',
+
+      typeEpic: '#b39df3',
+      typeFeature: '#9ed072',
+      typeBug: '#fc5d7c',
+      typeTask: '#76cce0',
+      typeChore: '#7f8490',
+
+      primary: '#0087ff',
+      selection: '#ff005f',
+      secondary: '#76cce0',
+      accent: '#b39df3',
+      background: '#2c2e34',
+      text: '#0087ff',
+      textDim: '#7f8490',
+      border: '#00af87',
+      success: '#9ed072',
+      error: '#fc5d7c',
+      warning: '#e7c664',
     },
   },
 
@@ -189,6 +228,7 @@ export const themes: Record<string, Theme> = {
       typeChore: 'gray',
 
       primary: 'white',
+      selection: 'white',
       secondary: 'gray',
       accent: 'white',
       background: 'black',

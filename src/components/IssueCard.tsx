@@ -27,13 +27,13 @@ export function IssueCard({ issue, isSelected = false }: IssueCardProps) {
   return (
     <Box
       borderStyle="round"
-      borderColor={isSelected ? theme.colors.primary : theme.colors.border}
+      borderColor={isSelected ? theme.colors.selection : theme.colors.border}
       paddingX={1}
       flexDirection="column"
       width={LAYOUT.columnWidth - 2}
     >
       <Box flexDirection="column">
-        <Text bold color={isSelected ? theme.colors.primary : theme.colors.text}>
+        <Text bold color={isSelected ? theme.colors.selection : theme.colors.text}>
           {truncateText(issue.title, LAYOUT.titleMaxLength)}
         </Text>
         <Text color={theme.colors.textDim}>{issue.id}</Text>
